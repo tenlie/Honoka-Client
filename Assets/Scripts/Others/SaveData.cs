@@ -9,13 +9,14 @@ public class SaveData : MonoBehaviour
     public static string _saveDate = "(non)";
 
     // Init UserInfo
-    public static string _userID = "";
-    public static string _pwd = "";
+    public static string _userID = "admin1";
+    public static string _userPW = "admin";
 
     // Init Option
     public static string _sound = "ON";
     public static string _autoTimeCheck = "ON";
     public static string _pushAlarm = "ON";
+    public static string _autoLogin = "OFF";
 
     static void SaveDataHeader(string dataGroupName)
     {
@@ -55,7 +56,7 @@ public class SaveData : MonoBehaviour
             // UserID Data
             SaveDataHeader("SDG_UserInfo");
             PlayerPrefs.SetString("UserID", _userID);
-            PlayerPrefs.SetString("Pwd", _pwd);
+            PlayerPrefs.SetString("Pwd", _userPW);
 
             // Save
             PlayerPrefs.Save();

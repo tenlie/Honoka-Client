@@ -387,10 +387,14 @@
     <Compile Include="Assets\Scripts\GameLobby\GameMgr.cs" />
     <Compile Include="Assets\Scripts\GameLobby\TowerController.cs" />
     <Compile Include="Assets\Scripts\Network\NetworkController.cs" />
+    <Compile Include="Assets\Scripts\Network\NetworkMgr.cs" />
     <Compile Include="Assets\Scripts\Network\SplashScreenController.cs" />
+    <Compile Include="Assets\Scripts\Others\CFadeIn.cs" />
+    <Compile Include="Assets\Scripts\Others\FacebookMgr.cs" />
     <Compile Include="Assets\Scripts\Others\GooglePlayMgr.cs" />
     <Compile Include="Assets\Scripts\Others\QueryXmlParser.cs" />
     <Compile Include="Assets\Scripts\Others\SaveData.cs" />
+    <Compile Include="Assets\Scripts\Others\TitleSceneMgr.cs" />
     <Compile Include="Assets\Scripts\Others\zFoxDataPackString.cs" />
   </ItemGroup>
   <ItemGroup>

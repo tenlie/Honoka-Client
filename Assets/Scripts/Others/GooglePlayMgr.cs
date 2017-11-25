@@ -2,30 +2,27 @@
 using GooglePlayGames;
 using System.Collections.Generic;
 using GooglePlayGames.BasicApi;
-using GooglePlayGames.BasicApi.SavedGame;
 
-public class GooglePlayMgr : MonoBehaviour {
-
+public class GooglePlayMgr : MonoBehaviour
+{
     private static GooglePlayMgr _instance;
-    public static GooglePlayMgr Instance
-    {
-        get
-        {
-            if (_instance==null) _instance = new GooglePlayMgr();
-            return _instance;
-        }
-    }
+    public static GooglePlayMgr Instance { get { return _instance; }}
     
-    private bool _authenticating = false;
-    public bool _authenticated { get { return Social.Active.localUser.authenticated; } }
+    private static bool _authenticating = false;
+    public static bool _authenticated { get { return Social.Active.localUser.authenticated; } }
 
     //list of achievements we know we have unlocked (to avoid making repeated calls to the API)
-    private Dictionary<string, bool> _unlockedAchievements = new Dictionary<string, bool>();
+     static private Dictionary<string, bool> _unlockedAchievements = new Dictionary<string, bool>();
     //achievement increments we are accumulating locally, waiting to send to the games API
-    private Dictionary<string, int> _pendingIncrements = new Dictionary<string, int>();
-    
+    static private Dictionary<string, int> _pendingIncrements = new Dictionary<string, int>();
+
+    public static GooglePlayMgr GetInstance()
+    {
+        return _instance;
+    }
+
     //구글플레이 초기화
-    public void Initialize()
+    public static void Initialize()
     {
         // Enable/disable logs on the PlayGamesPlatform
         PlayGamesPlatform.DebugLogEnabled = false;
@@ -39,7 +36,7 @@ public class GooglePlayMgr : MonoBehaviour {
     }
 
     //구글플레이 로그인
-    public void SignInToGooglePlay()
+    public static void SignInToGooglePlay()
     {
         if (_authenticated || _authenticating)
         {
@@ -63,13 +60,13 @@ public class GooglePlayMgr : MonoBehaviour {
     }
 
     //구글플레이 로그아웃
-    public void SignOutFromGooglePlay()
+    public static void SignOutFromGooglePlay()
     {
         GooglePlayGames.PlayGamesPlatform.Instance.SignOut();
     }
 
     //구글플레이 업적 조회
-    public void ShowGooglePlayAchievements()
+    public static void ShowGooglePlayAchievements()
     {
         if (_authenticated)
         {
@@ -78,7 +75,7 @@ public class GooglePlayMgr : MonoBehaviour {
     }
 
     //구글플레이 리더보드 조회
-    public void ShowLeaderboardUI()
+    public static void ShowLeaderboardUI()
     {
         if (_authenticated)
         {
